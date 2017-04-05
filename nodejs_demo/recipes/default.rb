@@ -17,6 +17,7 @@ application app_path do
   git app_path do
     repository app["app_source"]["url"]
     revision app["app_source"]["revision"]
+    deploy_key chef_vault_item('deploy_keys', 'prevenda_app')['key']
   end
 
   link "#{app_path}/server.js" do
